@@ -1,0 +1,93 @@
+<meta charset="UTF-8">
+
+<p>Decodificador de Texto</p>
+
+<input>
+<br>
+<button>Enviar texto</button>
+<br>
+<br>
+<br>
+<br>
+
+<script>
+
+
+    var input ="a-e-i-o-u";
+
+    var letra = 0;
+
+    function criptografar() { 
+
+        while (letra < input.length) {
+
+            var vogais = ["a", "e", "i", "o", "u"];
+            var conversao = ["ai", "enter", "imes", "ober", "ufat"];
+
+            var item = 0
+
+            if (vogais.length != 0) {
+
+                for (item; item < vogais.length; item++) {
+
+                    if (input[letra] == vogais[item]) {
+                        
+                        document.write(conversao[item]);
+                        break;
+                    
+                    }
+                }
+                    
+                if (input[letra] != vogais[item]){
+                    
+                    document.write(input[letra])
+                
+                }
+               
+            }
+
+            letra ++
+            
+        }
+
+    }
+
+    /*function descriptografar() { 
+
+        while (letra < input.length) {
+
+            var vogais = ["a", "e", "i", "o", "u"];
+            var conversao = ["ai", "enter", "imes", "ober", "ufat"];
+
+            var item = 0
+
+            if (conversao.length != 0) {
+
+                for (item; item < conversao.length; item++) {
+
+                    if (input[letra] == conversao[item]) {
+                        
+                        document.write(vogais[item]);
+                        break;
+                    
+                    }
+                }
+                    
+                if (input[letra] != conversao[item] ){
+                    document.write(input[letra])
+                
+                }
+               
+            }
+
+            item = 0;
+            letra ++
+            
+        }
+
+    }*/
+
+    
+    criptografar()
+
+</script>
