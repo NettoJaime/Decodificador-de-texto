@@ -1,28 +1,31 @@
-var input1 ="gaitober";
-var input2 ="gato";
+var codigo = [["a", "ai"], ["e", "enter"], ["i", "imes"], ["o", "ober"], ["u", "ufat"]];
+
+var input1 ="gato";
+var input2 ="gaitober";
 
 var letra = 0;
 
-console.log(input1.length)
+//console.log(input1.length)
+
+//console.log(codigo[0][1])
 
 while (letra < input1.length) {
 
-    var vogais = ["a", "e", "i", "o", "u"];
-    var conversao = ["ai", "enter", "imes", "ober", "ufat"];
+    var codigo = [["a", "ai"], ["e", "enter"], ["i", "imes"], ["o", "ober"], ["u", "ufat"]];
 
-    if (vogais.length != 0) {
+    if (codigo.length != 0) {
 
-        for (var item = 0; item < vogais.length; item++) {
-
-            if (input1[letra] == vogais[item]) {
+        for (var item = 0; item < codigo.length; item++) {
+            
+            if (input1[letra] == codigo[item][0]) {
                 
-                console.log(conversao[item]);
+                console.log(codigo[item][1]);
                 break;
             
             }
         }
             
-        if (input1[letra] != vogais[item]){
+        if (input1[letra] != codigo[item][0]) {
 
             console.log(input1[letra]);
         
