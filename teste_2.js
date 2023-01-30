@@ -1,61 +1,49 @@
-var codigo = [["a", "ai"], ["e", "enter"], ["i", "imes"], ["o", "ober"], ["u", "ufat"]];
-var vogais = ["a", "e", "i", "o", "u"];
-var conversao = ["ai", "enter", "imes", "ober", "ufat"];
-var input1 ="gato";
-var input2 ="gaitober";
+var entrada ="gato";
+var saida ="gaitober denter bobertais";
 
-var posicaoLetra = 3;
+var posicao = 0;
 
-console.log(input1[posicaoLetra])
-console.log(vogais.indexOf(input1[posicaoLetra]))
+function encriptar(entrada) {
 
-if (vogais.indexOf(input1[posicaoLetra]) >= 0) {
-    console.log(conversao[vogais.indexOf(input1[posicaoLetra])])
-} else {
-    console.log(input1[posicaoLetra])
-}
+    var vogais = ["e", "i", "a", "o", "u"];
+    var conversao = ["enter", "imes", "ai", "ober", "ufat"];
 
-//console.log(codigo[0][1])
+    for (posicao; posicao < vogais.length; posicao++) {
 
-/*while (posicaoLetra < input1.length) {
+        if (entrada.includes(vogais[posicao])) {
 
-    
-    //var codigo = [["a", "ai"], ["e", "enter"], ["i", "imes"], ["o", "ober"], ["u", "ufat"]];
-    var item = 0
-
-    if (codigo.length != 0) {
-
-        for (item; item < codigo.length; item++) {
-
-            
-            
-            if (codigo.indexOf(input1[posicaoLetra]) == true) {
-                
-                console.log(codigo[item][1]);
-                //break;
-            
-            } 
-            
-            if (input1[posicaoLetra] != codigo[item][0]) {
-                
-                console.log(input1[posicaoLetra]);
+            entrada = entrada.replaceAll(vogais[posicao], conversao[posicao])
         
-            
-            }
+        }  
 
-            if (input1[posicaoLetra] != " ") {
-
-                console.log(" ");
-                break
-            }
-
-        }
-        //console.log(codigo[item][item]);   
-        
-       
     }
 
-    posicaoLetra ++
-    
-}*/
+    return entrada
 
+}
+
+console.log(encriptar(entrada));
+//_____________________________________________________________________________
+
+var posicao = 0;
+
+function desencriptar(saida) {
+
+    var vogais = ["e", "i", "a", "o", "u"];
+    var conversao = ["enter", "imes", "ai", "ober", "ufat"];
+
+    for (posicao; posicao < conversao.length; posicao++) {
+
+        if (saida.includes(conversao[posicao])) {
+
+            saida = saida.replaceAll(conversao[posicao], vogais[posicao])
+        
+        }  
+
+    }
+
+    return saida
+
+}
+
+console.log(desencriptar(saida));

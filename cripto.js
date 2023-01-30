@@ -1,35 +1,24 @@
-var input ="gato";
+var entrada = "gato de botas";
 
-var letra = 0;
+var posicao = 0;
 
+function encriptar(entrada) {
 
-while (letra < input.length) {
+    var vogais = ["e", "i", "a", "o", "u"];
+    var conversao = ["enter", "imes", "ai", "ober", "ufat"];
 
-    var vogais = ["a", "e", "i", "o", "u"];
-    var conversao = ["ai", "enter", "imes", "ober", "ufat"];
+    for (posicao; posicao < vogais.length; posicao++) {
 
-    var item = 0
+        if (entrada.includes(vogais[posicao])) {
 
-    if (vogais.length != 0) {
-
-        for (item; item < vogais.length; item++) {
-
-            if (input[letra] == vogais[item]) {
-                
-                document.write(conversao[item]);
-                break;
-            
-            }
-        }
-            
-        if (input[letra] != vogais[item]){
-            
-            document.write(input[letra])
+            entrada = entrada.replaceAll(vogais[posicao], conversao[posicao]);
         
-        }
-       
+        }  
+
     }
 
-    letra ++
-    
+    return entrada;
+
 }
+
+console.log(encriptar(entrada));

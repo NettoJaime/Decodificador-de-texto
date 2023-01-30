@@ -2,7 +2,7 @@
 
 <p>Decodificador de Texto</p>
 
-<input>
+<textarea></textarea>
 <br>
 <button>Enviar texto</button>
 <br>
@@ -12,82 +12,28 @@
 
 <script>
 
+    var input = "a-e-i-o-u";
 
-    var input ="a-e-i-o-u";
+    var posicao = 0
 
-    var letra = 0;
+    function encriptar(entrada) {
 
-    function criptografar() { 
+        var codigo = [["e" , "enter"] , ["i" , "imes"], ["a" ,"ai"] , ["o" , "ober"], ["u" , "ufat"]];
 
-        while (letra < input.length) {
+        for (posicao; posicao < codigo.length; posicao++) {
 
-            var vogais = ["a", "e", "i", "o", "u"];
-            var conversao = ["ai", "enter", "imes", "ober", "ufat"];
+            if (entrada.includes(codigo[posicao][0])) {
 
-            var item = 0
-
-            if (vogais.length != 0) {
-
-                for (item; item < vogais.length; item++) {
-
-                    if (input[letra] == vogais[item]) {
-                        
-                        document.write(conversao[item]);
-                        break;
-                    
-                    }
-                }
-                    
-                if (input[letra] != vogais[item]){
-                    
-                    document.write(input[letra])
-                
-                }
-               
-            }
-
-            letra ++
+                entrada = entrada.replaceAll(codigo[posicao][0], codigo[posicao][1])
             
+            }  
+
         }
+
+        return entrada
 
     }
-
-    /*function descriptografar() { 
-
-        while (letra < input.length) {
-
-            var vogais = ["a", "e", "i", "o", "u"];
-            var conversao = ["ai", "enter", "imes", "ober", "ufat"];
-
-            var item = 0
-
-            if (conversao.length != 0) {
-
-                for (item; item < conversao.length; item++) {
-
-                    if (input[letra] == conversao[item]) {
-                        
-                        document.write(vogais[item]);
-                        break;
-                    
-                    }
-                }
-                    
-                if (input[letra] != conversao[item] ){
-                    document.write(input[letra])
-                
-                }
-               
-            }
-
-            item = 0;
-            letra ++
-            
-        }
-
-    }*/
-
     
-    criptografar()
+    document.write(encriptar(input))
 
 </script>
