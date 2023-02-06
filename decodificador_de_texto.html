@@ -1,39 +1,129 @@
-<meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Decodificador de Texto</title>
 
-<p>Decodificador de Texto</p>
+		<link rel="stylesheet" href="reset.css">
+		<link rel="stylesheet" href="style.css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
-<textarea></textarea>
-<br>
-<button>Enviar texto</button>
-<br>
-<br>
-<br>
-<br>
+	</head>
 
-<script>
+	<body>
+		<header>
 
-    var input = "a-e-i-o-u";
+			<img class="logo" src="logo.png" alt="Logo da alura - Letra 'a' estilizada">
 
-    var posicao = 0
+		</header>
 
-    function encriptar(entrada) {
-
-        var codigo = [["e" , "enter"] , ["i" , "imes"], ["a" ,"ai"] , ["o" , "ober"], ["u" , "ufat"]];
-
-        for (posicao; posicao < codigo.length; posicao++) {
-
-            if (entrada.includes(codigo[posicao][0])) {
-
-                entrada = entrada.replaceAll(codigo[posicao][0], codigo[posicao][1])
+		<main>
             
-            }  
+			<section class="principal">
 
-        }
+                <textarea class="entrada-texto" rows="21" cols="15" placeholder="Digite seu texto"></textarea>
 
-        return entrada
+				<h1 class="informacao">⚠ - Apenas letras minúsculas e sem acento.</h1>
 
-    }
-    
-    document.write(encriptar(input))
+				<div class="botoes">
 
-</script>
+					<button class="encriptar" onclick="btEncriptar()">Criptografar</button>
+					<button class="desencriptar" onclick="btDesencriptar()">Descriptografar</button>
+
+				</div>
+
+			</section>
+
+			<section class="saida">
+
+				<textarea class="saida-texto" rows="21" cols="5"></textarea>
+
+				<div class="botao-copiar">
+
+					<button class="copiar" onclick="copiarTexto()">Copiar</button>
+
+				</div>
+
+			</section>
+
+			<script>
+
+				var entradaTexto = document.querySelector(".entrada-texto");
+				var saidaTexto = document.querySelector(".saida-texto");		
+
+				function btEncriptar() {
+					var entradaEncrip = encriptar(entradaTexto.value);
+					saidaTexto.value = entradaEncrip;
+					entradaTexto.value = "";
+				}
+
+				function encriptar(entrada) {
+					
+					entrada = entrada.toLowerCase();
+					var posicao = 0;
+					var vogais = ["e", "i", "a", "o", "u"];
+					var conversao = ["enter", "imes", "ai", "ober", "ufat"];
+
+					for (posicao; posicao < vogais.length; posicao++) {
+
+						if (entrada.includes(vogais[posicao])) {
+
+							entrada = entrada.replaceAll(vogais[posicao], conversao[posicao])
+						
+						}  
+
+					}
+
+					return entrada;
+
+				}
+
+				function btDesencriptar() {
+					var entradaDesencrip = desencriptar(entradaTexto.value);
+					saidaTexto.value = entradaDesencrip;
+					entradaTexto.value = "";
+				}
+				
+				function desencriptar(saida) {
+
+					saida = saida.toLowerCase();
+					var posicao = 0;
+					var vogais = ["e", "i", "a", "o", "u"];
+					var conversao = ["enter", "imes", "ai", "ober", "ufat"];
+
+					for (posicao; posicao < conversao.length; posicao++) {
+
+						if (saida.includes(conversao[posicao])) {
+
+							saida = saida.replaceAll(conversao[posicao], vogais[posicao])
+						
+						}  
+
+					}
+
+					return saida;
+			
+				}
+				
+				function copiarTexto() {
+						var textoCopiado = saidaTexto;
+
+						textoCopiado.select();
+						document.execCommand("copy");
+						saidaTexto.value = "";
+
+						alert("Texto copiado com sucesso!")
+
+					}
+			
+			</script>
+
+		</main>
+
+		<footer>
+			<p class="copyright">&copy; Jaime Netto - 2023</p>
+		</footer>
+	</body>
+</html>
+
